@@ -15,13 +15,12 @@ weight=0.5   # when we do lattice-rescoring, instead of replacing the lm-weights
 set -e
 
 dir=data/pytorch
-mkdir -p $dir
-
+#mkdir -p $dir
 
 
 # Need to install pytorch (torch) Manually
 echo "Things to do : "
-echo "1. Need to install pytorch (torch) Manually at tools/torch"
+echo "1. Need to config pytorch (torch) Manually then go for the bulid CMakeLists.txt"
 echo "2. Save the model at data/pytorch/rnnlm Manually"
 
 
@@ -56,7 +55,7 @@ if [ $stage -le 3 ]; then
     # old-lang-dir -> data/lang_test_tg
     # Lattice rescoring
 
-    pytorch/lmrescore_rnnlm_lat.sh \
+    steps/pyrnnlm/lmrescore_rnnlm_lat.sh \
       --cmd "$train_cmd" \
       --weight $weight --max-ngram-order $ngram_order \
       data/lang_test_tg $dir \
